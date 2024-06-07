@@ -6,4 +6,4 @@ v1.0: Implementation of the container with the services and configurations neces
 
 v2.0: Implementation of an administration panel for the hidden services that are working, taking advantage of the capabilities of the internal network of Docker to manage it locally
 
-v3.0: Implementation of IDS and control of events that occur to detect threats
+v3.0: Implementation of IDS and event control to detect threats
