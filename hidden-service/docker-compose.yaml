@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  traefik:
+    image: traefik:v2.5
+    command:
+      - "--api.insecure=true" # Habilita el dashboard (solo para desarrollo)
+      - "--providers.docker=true" # Habilita el proveedor de Docker
+      - "--entrypoints.web.address=:80" # Configura el puerto HTTP
+      - "--entrypoints.websecure.address=:443" # Configura el puerto HTTPS
+      - "--certificatesresolvers.le.acme.httpchallenge=true" # Configura Let's Encrypt para SSL
+      - "--certificatesresolvers.le.acme.httpchallenge.entrypoint=web"
+    ports:
+      - "80:80"   # Exponer puerto HTTP
+      - "443:443" # Exponer puerto HTTPS
+      - "8080:8080" # Dashboard de Traefik
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock" # Permite a Traefik leer la configuración de Docker
